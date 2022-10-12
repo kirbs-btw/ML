@@ -40,21 +40,6 @@ public class Main {
         return probability;
     }
 
-    public static List<Integer> analyze(List<Integer> choices, int candidateCount){
-        List<Integer> data = new ArrayList<>();
-
-        for (int i = 0; i < candidateCount; i++){
-            int count = 0;
-            for (int choice : choices){
-                if (i == choice){
-                       count++;
-                }
-            }
-            data.add(count);
-        }
-        return data;
-    }
-
     public static void main(String[] args) {
         List<Node> outputLayer = new ArrayList<>();
         List<Node> inputLayer = new ArrayList<>();
