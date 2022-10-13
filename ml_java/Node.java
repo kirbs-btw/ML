@@ -7,7 +7,6 @@ public class Node{
         for (float dataPoint : a){
             data.add(dataPoint);
         }
-
     }
 
     public void checkValues(){
