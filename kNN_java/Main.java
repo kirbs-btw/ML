@@ -26,6 +26,7 @@ public class Main {
         return distSet;
     }
 
+
     public static List<List<Float>> bubbleSort(List<List<Float>> arr){
         List<Float> smaller = new ArrayList<>();
         List<Float> bigger = new ArrayList<>();
@@ -53,6 +54,13 @@ public class Main {
         return arr;
     }
 
+    public static List<List<Float>> slice(List<List<Float>> arr, int slice){
+        List<List<Float>> newArr = new ArrayList<>();
+        newArr = arr.subList(0, slice);
+
+        return newArr;
+    }
+
 
 
     public static void main(String[] args) {
@@ -67,6 +75,7 @@ public class Main {
         }
 
         System.out.println(bubbleSort(distance(inputNode, outputLayer)));
-
+        List<List<Float>> a = bubbleSort(distance(inputNode, outputLayer));
+        System.out.println((slice(a, 10)));
     }
 }
