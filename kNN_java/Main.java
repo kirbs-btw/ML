@@ -1,6 +1,3 @@
-import java.security.spec.RSAOtherPrimeInfo;
-import java.sql.Array;
-import java.sql.SQLOutput;
 import java.util.*;
 
 
@@ -61,6 +58,37 @@ public class Main {
         return newArr;
     }
 
+    public static int whereInArr(List<List<Integer>> arr, int num){
+
+        for (int i = 0; i < arr.size(); i++){
+            if (num == arr.get(i).get(0)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static List<List<Integer>> classify(List<List<Float>> arr){
+        List<List<Integer>> countArr = new ArrayList<>();
+
+        for(List<Float> littleArr : arr){
+            int item = Math.round(littleArr.get(0));
+            int foundIndex = whereInArr(countArr, item);
+            if (whereInArr(countArr, item) == -1){
+                List<Integer> addArr = new ArrayList<>();
+                int a = item;
+                addArr.add(item);
+                addArr.add(1);
+                countArr.add(addArr);
+            }
+            else{
+                int a = countArr.get(foundIndex).get(1);
+                countArr.get(foundIndex).set(1, a+1);
+            }
+        }
+
+        return countArr;
+    }
 
 
     public static void main(String[] args) {
@@ -77,5 +105,7 @@ public class Main {
         System.out.println(bubbleSort(distance(inputNode, outputLayer)));
         List<List<Float>> a = bubbleSort(distance(inputNode, outputLayer));
         System.out.println((slice(a, 10)));
+        List<List<Float>> b = slice(a, 10);
+        System.out.println(classify(b));
     }
 }
