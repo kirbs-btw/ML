@@ -50,6 +50,34 @@ public class Main {
 
         return arr;
     }
+    /*
+    public static List<List<Integer>> bubbleSortInt(List<List<Integer>> arr){
+        List<Integer> smaller = new ArrayList<>();
+        List<Integer> bigger = new ArrayList<>();
+        boolean run = true;
+
+
+        for (int i = 0; i < arr.size() && run; i++) {
+            run = false;
+
+            for (int y = 0; y < arr.size()-1; y++) {
+                System.out.println(arr.get(1));
+                System.out.println(arr.get(1).get(1));
+
+
+                if(arr.get(y).get(1) > arr.get(y + 1).get(1)) {
+                    bigger = arr.get(y);
+                    smaller = arr.get(y + 1);
+                    arr.set(y, smaller);
+                    arr.set(y + 1, bigger);
+                    run = true;
+                }
+            }
+        }
+
+        return arr;
+    }
+     */
 
     public static List<List<Float>> slice(List<List<Float>> arr, int slice){
         List<List<Float>> newArr = new ArrayList<>();
@@ -90,6 +118,12 @@ public class Main {
         return countArr;
     }
 
+    public static void getChance(List<List<Integer>> arr ,int slice){
+        for (List<Integer> cut : arr){
+            float chance = (float) cut.get(1) / slice;
+            System.out.println(cut.get(0) + " : " + chance);
+        }
+    }
 
     public static void main(String[] args) {
         Random random = new Random();
@@ -102,10 +136,15 @@ public class Main {
             outputLayer.add(a);
         }
 
+        int slice = 10;
+
         System.out.println(bubbleSort(distance(inputNode, outputLayer)));
         List<List<Float>> a = bubbleSort(distance(inputNode, outputLayer));
-        System.out.println((slice(a, 10)));
-        List<List<Float>> b = slice(a, 10);
+        System.out.println((slice(a, slice)));
+        List<List<Float>> b = slice(a, slice);
         System.out.println(classify(b));
+        List<List<Integer>> c = classify(b);
+        // System.out.println(bubbleSortInt(c));
+        getChance(c, slice);
     }
 }
